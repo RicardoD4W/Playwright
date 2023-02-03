@@ -256,7 +256,6 @@ Si tarda mucho cambiamos el timeout
 
 Ejecutamos y esperamos. Abajo del todo saldrá el trace, el cual puedes descargar
 
-Al hacer click en él nos saldrá algo como esto
 
 <br/>
 
