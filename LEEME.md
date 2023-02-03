@@ -6,14 +6,14 @@
 * [Qué es Playwright](#Playwright)
 * [Instalación](#Instalación)
 * [Creando nuestro primer test](#3)
-* [Que queremos probar…](#probar)
-* [Trace viewer](#Trace)
-* [¿Cómo encontrar objetos web?](#objetos)
-* [Assertions](#Assertions)
-* [Grabar videos y cámara lenta](#Grabar)
-* [Hooks](#Hooks)
-* [Anotaciones](#Anotaciones)
-* [Etiquetas](#Etiquetas)
+* [Que queremos probar…](#4)
+* [Trace viewer](#5)
+* [¿Cómo encontrar objetos web?](#6)
+* [Assertions](#7)
+* [Grabar videos y cámara lenta](#8)
+* [Hooks](#9)
+* [Anotaciones](#10)
+* [Etiquetas](#11)
 
 
 <br>
@@ -126,264 +126,308 @@ npx playwright test -–debug
 # ¡Creando nuestro primer test! :smirk:
 
 
-En la carpeta test nos creamos otro archivo de test (ex.specs.js)
+En la carpeta :open_file_folder: test :open_file_folder: nos creamos otro archivo de test (ex.specs.js)
 Añadimos el módulo de test de playwright 
-const {test, expect} = require(‘@playwriht/test’) ←esto debería de sonar ;)
-Una carpeta dentro de test (ex:demo) y dentro nuestro archivo de pruebas ex.js
-/test/demo/ex.js
 
-Haremos estas dificiles funciones (podeis exportarla como querais)
+``` JS
+const {test, expect} = require(‘@playwriht/test’)
 
+//Dependiendo de si usamos los módulos de ES
 
-Y la añadimos en el .specs.js
-Const {hello, helloworld} = require(‘./demo/demo)
+import {test, expect} from '@playwriht/test'
+```
 
+<br/>
 
+Hacemos las siguientes funciones de prueba (2 maneras distintas de exportar): 
+```JS
+exports.hello = function f1(){
+    return 'hello'
+}
 
+export const helloWorld = () =>{
+    return 'hello world'
+}
+```
 
+<br/>
 
+Las añadimos al fichero donde estamos haciendo las pruebas y las funciones necesarias paar hacer las pruebas
 
+(A partir de aquí seguiré la sintasis sin modulos de ES)
+```JS
+const {test, expect} = require('@playwriht/test')
+const {hello, helloWorld} = require('./demo/hello')
+```
 
+ * Creamos un bloque de test con la funcion 'test()'
+    * Tiene que ser asíncrona
+    * El primer parametro es el nombre del test
+    * El segundo es un callback, al cual le pasamos 'page' desectructurado (esta será la página a la que vayamos)
+    * expect() es una funcion que comprueba que el parámetro de entrada sea el mismo que el de salida
 
-
-Creamos un bloque de tests con test()
-
-
-
-
-
-Este error saldrá si no la hacemos asíncrona porque espera algo que tarda 
-
-Entonces cuando ya lo tengamos arreglado usaremos expect para que espere algo de esa pagina, en nuestros proyectos usaremos local
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Veamos un ejemplo de error con un par de cosas interesantes
-
-
-Como podeis ver, hemos escrito mal a posta google, aún sin saber que hay un title en la pagina q es ‘Google’, playwright hace ‘scratching’ y nos da esa salida
-
-Podemos ver el verbose tanto en consola como en los reportes html que nos genera
-
-Si miramos en expect.js veremos toda la gran variedad de opciones que nos proporciona
+```JS
+test('My First Test', async ({page}) => {
+    await page.goto('https://google.com')
+    await expect(page).toHaveTitle('Google')
+})
+```
 
 
-	¿Hacer test sin saber hacer test? Por supuesto
+
+<br/>
+
+## ¿Hacer test sin saber hacer test? Por supuesto
+
 Efectivamente, aparte de los reportes, la velocidad, el soporte y las distintas operaciones en paralelo con distintos navegadores, playwright también nos permite grabar nuestros test. Una idea bastante original y cercana a la experiencia de usuario, fácil de ver y asimilar, Porque estas pruebas las haremos en directo interactuando con la página
 
-Para ello solo tenemos que ejecutar: npx playwright codegen
- (--help para ver todos los comandos)
-Por defecto nos abre en una pagina vacia y el inspector de playwright,
-En esa pestaña tendremos que poner nuestra pagina (asi comprueba el acceso)
-Y poniendo el ratón sobre los elemento podremos ver la magia e iremos interactuando con la pagina con el inspector abierto y veremos como genera automaticamente los test
+Para ello solo tenemos que ejecutar: 
+```bash
+npx playwright codegen # --help para ver todos los comandos
+```
+
+Por defecto nos abre en una pagina vacia y el inspector de playwright, en la URL tendremos que poner nuestra pagina
+Y poniendo el ratón sobre los elemento podremos ver la magia e iremos interactuando con la pagina con el inspector abierto y veremos como genera automáticamente los test
 Cuando queramos le damos al boton de grabar para que pare, podemos copiar los test,
 Y en el target podemos exportarlo a cualquier lenguaje de los seleccionados
-Podemos comprobarlo en la terminal 
 
-Npx playwright codegen –target javascript -o .\test\donde lo pondremos.specs.js
-Este puede dar problemas porque hace todo solo
-
-Ej de fallo en webkit por no soportar un icono
-
-  
-
-Que queremos probar…
-
-Que queremos probar en responsive? Pues…
-	Npx playwright codegen –viewport-size=800,600 
-
-Que queremos probar en un modelo especifico? Pues…
-	Npx playwright codegen –device=”iPhone 11” 
-(los modelos que soporta son los de las devtools de inspeccionar, si pones alguno mal o que no exista, te muestra todos los disponibles, PROBAR)
+```bash
+npx playwright codegen –target javascript -o .\test\donde lo pondremos.specs.js
+# Guarda automáticamente en el archivo los test generados
+```
 
 
-Que queremos probar el modo oscuro? Pues…
-		Npx playwright codegen –color-scheme=dark (o light) 
-(Npx playwright codegen –color-scheme=dark playwright.dev)
+# 4
 
-	
+# Que queremos probar…
 
+ * Que queremos probar en distintos viewports? Pues…
+```bash
+npx playwright codegen –viewport-size=800,600 
+```
 
+ * Que queremos probar en un modelo especifico? Pues…
+```bash
+npx playwright codegen –device=”iPhone 11” 
+# Los modelos que soporta son los de las devtools de inspeccionar, si pones alguno mal o que no exista, te muestra todos los disponibles
+```
 
+ * Que queremos probar el modo oscuro? Pues…
+```bash
+npx playwright codegen –color-scheme=dark
+# O light 
+# Probar npx playwright codegen –color-scheme=dark playwright.dev
+```
 
+<br/>
+<br/>
 
+# 5
+# Usando trace viewer
 
-Usando trace viewer
 El trace viewer es una herramienta GUI que nos ayuda pudiendo visualizar test a lo largo del proceso con capturas, incluye linea de tiempo y otros detalles.
-(Acciones(antes, y después), Metadatos, Llamadas,Consola,Network,Recursos, Interacción de clicks…)
+
+ * Acciones
+    * Antes y después
+ * Metadatos
+ * Llamadas
+ * Consola
+ * Network
+ * Recursos
+ * Interacción de clicks…
+
 Básicamente podremos ver el estado de nuestra aplicación en cada punto de la misma
 
 
-1.-	Abrir la configuración (playwright.config.js ) y poner     trace: ‘on-first-retry’
+1 -	Abrir la configuración (playwright.config.js ) y poner     
+```JS
+// dentro del use{}
+trace: ‘on-first-retry’
 
-
-	
-Las dos últimas líneas
+/* Retry on CI only*/
+// retries: process.env.CI ? 2 : 0,
+retries : 1,
+```
 
 Significa que recolecta el trace cuando intentamos fallar el test solo la 1era vez
 Así que usaremos un test grabado y cambiaremos algo para que falle y ejecutamos el test
 
 Si tarda mucho cambiamos el timeout
 
+Ejecutamos y esperamos. Abajo del todo saldrá el trace, el cual puedes descargar
 
+Al hacer click en él nos saldrá algo como esto
 
+<br/>
 
-Ejecutamos y esperamos
+Podremos ver muchos datos, :mag: EXPLORA :mag_right:
 
- 
-Veremos algo como eso
-Y abajo del todo en trace, que la traza que puedes descargar
-
-
-Al hacer click nos saldrá algo como esto
-
-
-
-Podremos ver muchos datos, explorad
+<br/>
 
 También podremos acceder por comandos con npx playwright show-trace trace.zip
  
 
 
-Opciones del trace viewer
-‘On-first-retry’ → graba la traza solo después de fallar por primera vez
-’Off’		→ ¿Quién quiere grabar?
-‘On’		→ Graba por cada test (pesa mucho no recomendado)
-‘Retain-on-failure’ → (Graba por cada test pero borra los exitosos)
+## Opciones del trace viewer
+ * ‘On-first-retry’ → graba la traza solo después de fallar por primera vez
+ * ’Off’		→ ¿Quién quiere grabar?
+ * ‘On’		→ Graba por cada test (pesa mucho no recomendado)
+ * ‘Retain-on-failure’ → (Graba por cada test pero borra los exitosos)
 
 
 Para settear el trace desde comandos …
-	Npx playwright test –trace on 
-	Npx playwright show-trace trace.zip
-	
-Desde navegador
-	Trace.playwright.dev (arrastad el zip ahi :))
-
-Programar auto test añadid: (no lo veremos en detalle)
+```bash
+npx playwright test –trace on 
+npx playwright show-trace trace.zip
+```
 
 
 
+# 6
+# ¿Cómo encontrar objetos web?
+```JS
+//Añadimos al test antes de todo
+test('blablabla', async ({page})=>{
+    await page.pause()
+    ...
+})
+```
+Presionad el botón de explorar para ver todos los objetos web
+
+ * Referencias para ampliar
+    * https://playwright.dev/docs/api/class-selectors
+    * https://playwright.dev/docs/api/class-locator
 
 
 
-¿Cómo encontrar objetos web?
- 
+<br/>
+<br/>
 
+# 7
+# Assertions
+## Comprueba o verifica
+### Comprueba si actual = esperado
 
-Dar al botón de explorar para ver todos los objetos web
-
-
- 
-https://playwright.dev/docs/api/class-selectors
-https://playwright.dev/docs/api/class-locator
-
-
-
-
-
-
-
-
-
-
-
-
-
-Demo login test
-
-https://practicetestautomation.com/practice-test-login/
-
-
-
-
-Assertions
-Comprueba o verifica
-Comprueba si actual = esperado
  EJ: está o no presente, visible o invisible disponible o no, coindice el test, atributo de elemento, url…
 
+```JS
+test('Asertion demo', async ({page})=>{
+    await page.goto('hhtps://kitchen.applitools.com')
+    await page.pause()
+
+    //ASERTIONS
+    //Check if the element is present or not
+    await expect(page.locator('text=The Kitchen')).toHaveCount(1)
+
+    if( await page.$('text=The Kitchen')) await page.locator('text=The Kitchen').click()
+
+    // Check element hidden or visible
+    await expect(page.locator('text=The Kitchen')).toBeVisible()
+    await expect.soft((page.locator('text=The Kitchen')).toBeHidden())
+})
+// Con la funcion 'soft()' Aunque falle el test no se detiene
+
+// Check attribute value
+    await expect(page.locator('text=The Kitchen')).toHaveAttribute('class', /.*css-dpmy2a/)
+```
 
 
- 
-Con el soft() Aunque falle el test no se detiene
-
- 
 
 
 
+<br/>
+<br/>
 
+# 8
+# Grabar videos y cámara lenta
 
+En el playwright.config.js 
+* Antes:
+```JS
+use:{
+           I
+   // Maximum time each action such as `cl...
+   actionTimeout: 0,
+   // Base URL to use in actions like `awa:...
+   // baseURL: hhttp://localhost:30001,...
+   // Collect trace when retrying the fail...
+   trace: 'on-first-retry',
+}
+``` 
 
-Grabar videos y cámara lenta
-
-En el playwright.config.js
-	Antes: 
-
-
-	Después:
- 
-
+* Después:
+```JS
+use:{
+// Shared settings for all the projects...
+  video: 'on',
+  launchOptions:{
+     slowMo: 1000
+// Maximum time each action such as...
+  actionTimeout: 0,
+// Base URL to use in actions like `aw...
+// baseURL: 'http://localhost:30001,...
+    }
+}
+``` 
 Guardamos ejecutamos y abrimos el reporte, abajo del todo deberá aparecer nuestro video
 
 
+# 9
+# Hooks
 
+ * Hooks : 
+	* test.beforeAll → antes de todos
+	* test.beforeEach → antes de cada uno
+	* test.afterAll → después de todos
+	* test.afterEach → después de cada uno
 
-Hooks
-Hooks : 
-	test.beforeAll → antes de todos
-	test.beforeEach → antes de cada uno
-	test.afterAll → después de todos
-	test.afterEach → después de cada uno
+ * Groups :
+    * Describe() → agrupa los test
 
-Groups :
-Describe → agrupa los test
-
+```JS
 test.describe(‘All my test’, ()=>{
-
 	test(‘test1’, ()=>{})
 	test(‘test2’, ()=>{})
 	test(‘test3’, ()=>{})
 	test(‘test4’, ()=>{})
-
 })
+```
 
 
 
+<br/>
+<br/>
+
+# 9
+# Anotaciones
+ ## Ejemplo : 
+ * test
+    * .skip()
+    * .fail()
+    * .fixme()
+    * .slow()
+    * .only()
+
+![example test](./tests.png)
+
+ * Tags: 
+    * @smoke
+    * @reg
+    * @sanity
+    * @fast
+    * @slow
+
+Las tags sirven para identrificar y distinguir nuestros test, estas se usan en el nombre de los test ejemplo: 
+```JS
+test('Test Full Report @smoke', async({page})=>{
+    ...
+})
+```
+
+### Para ejecutar un test con tag en específico
+```bash
+npx playwriting –grep “@smoke”  # En el caso del ejemplo 
+npx playwright test --grep-invert @slow # Todos menos el @slow
+```
 
 
-
-Anotaciones
-
-
-
-
-
- 
-Ejemplo : 
-
-Tags
-@smoke
-@reg
-@sanity
-@fast
-@slow
-
-Ejemplo de uso  🔽 (falta cerrar una ‘)
-Para ejecutar un test con tag en específico
-Npx playwriting –grep “@smoke”  (en el caso del ejemplo) 
-
-npx playwright test --grep-invert @slow
-Todos menos el @slow
