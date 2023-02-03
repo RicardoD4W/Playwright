@@ -5,7 +5,7 @@
 
 * [Qué es Playwright](#Playwright)
 * [Instalación](#Instalación)
-* [Creando nuestro primer test](#test)
+* [Creando nuestro primer test](#:smirk:)
 * [Que queremos probar…](#probar)
 * [Trace viewer](#Trace)
 * [¿Cómo encontrar objetos web?](#objetos)
@@ -71,44 +71,57 @@ Con este comando nos preguntará un par de cosas, las mas importantes son lengua
 </div>
 <br/>
 
-Nos fijamos en el verbose del comando
-@playwright/test → package.json !!!
-La configuración está en playwright.config.js viene auto pero podemos modificarla (no es necesario ni importante)
-En la carpeta test, tenemos un ejemplo básico ya hecho ‘example.specs.js’
+
+La configuración está en playwright.config.js
+En la carpeta 'test', tenemos un ejemplo básico ya hecho ‘example.specs.js’
 Se añade automáticamente al gitignore para que no tengamos que preocuparnos al subirlo a github 
-.yml se usa para cosas internas de CI y github
+
+``` bash
+npm playwright -v
+# Comprobamos si está bien instalado
+
+npx playwright -h 
+# Para una ver una ayuda
+```
+
+<br/><br/>
 
 
-npm playwright -v ← comprobamos si está bien instalado
-Npx playwright -h ← para ver los comandos de ejecución 
+## Como ejecutar los test
+
+``` bash
+npx playwright test
+```
+(busca todos los .specs. Y los ejecuta)
+Te generará un reporte en html en la carpeta :open_file_folder: playwright-report :open_file_folder:
+
+``` bash
+npx playwright test –-workers 3 
+#Te hará los test para 3 navegadores diferentes
+```
+
+``` bash
+npx playwright test -–proyect=chromiun
+#Para una tecnología específica
+```
+
+``` bash
+npx playwright test -–headed
+#Sin interfaz, consume mucho menos recursos
+```
+
+``` bash
+npx playwright test -–debug
+#Para debuggear el test (archivo:linea)
+```
 
 
-	
-Instalación por VS extensión
-Crear una carpeta
-Instalar la extension → playwright Test for VSCode
-Cntrl+shit+p >‘install playwright
-Seleccionamos todos y click ‘OK’
-Le damos al nuevo icono y podemos ver el debugger y el play para nuestros test. Podemos ejecutar todos o alguno en concreto
-Podemos elegir en que navegador ejecutar los test
+<br/>
+<br/>
 
 
-	3.- Como correr test
-npx playwright test (busca todos los .specs. Y los ejecuta) te generará un reporte en html (interactiva) en la carpeta playwright-report
-Npx playwright show-report o abris el .html como lo haces normalmente  
-npx playwright test –workers 3 
-Te hará los test para 3 navegadores diferentes
-npx playwright test one.specs.js (para uno en específico) (si quieres varios los pones a continuación)
-  O un test individual dentro del propio test → npm playwright test -g “homepage… in title”
-Npx playwright test –proyect=chromiun para una tecnología específica
-Npx playwright test –headed sin UI (para alex)
-Npx playwright test –debug , para debugger el test
-(archivo:linea)
-
-
-
-
-¡Creando nuestro primer test! :)
+# :smirk:
+# Creando nuestro primer test! 
 
 
 En la carpeta test nos creamos otro archivo de test (ex.specs.js)
