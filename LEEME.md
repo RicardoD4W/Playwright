@@ -42,7 +42,6 @@
 
 
 <br>
-<br>
 
 # Instalación
 ##### (Paso a paso y sin perdernos lo prometo)
@@ -58,13 +57,20 @@
 
 Instalación por comandos (npm). En cualquier carpeta
 
-``` nodejs
+``` bash
 npm init -y playwright@latest
 ```
 
-Elegir Ts || Js
-Nombramos ‘tests’
- Y
+Con este comando nos preguntará un par de cosas, las mas importantes son lenguaje y nombre de la carpeta, las demás podemos omitirlas con sus valores por defecto pulsando enter
+
+<br/>
+<div align="center">
+
+### :exclamation: ADVERTENCIA :exclamation:
+#### Nos fijamos siempre en el verbose del comando
+</div>
+<br/>
+
 Nos fijamos en el verbose del comando
 @playwright/test → package.json !!!
 La configuración está en playwright.config.js viene auto pero podemos modificarla (no es necesario ni importante)
