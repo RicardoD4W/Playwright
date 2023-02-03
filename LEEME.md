@@ -398,7 +398,7 @@ test.describe(‘All my test’, ()=>{
 <br/>
 <br/>
 
-# 9
+# 10
 # Anotaciones
  ## Ejemplo : 
  * test
@@ -410,7 +410,11 @@ test.describe(‘All my test’, ()=>{
 
 ![example test](./tests.png)
 
- * Tags: 
+<br/>
+<br/>
+
+# 11
+# Tags: 
     * @smoke
     * @reg
     * @sanity
