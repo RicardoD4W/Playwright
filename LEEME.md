@@ -5,7 +5,7 @@
 
 * [Qué es Playwright](#Playwright)
 * [Instalación](#Instalación)
-* [Creando nuestro primer test](#:smirk:)
+* [Creando nuestro primer test](#3)
 * [Que queremos probar…](#probar)
 * [Trace viewer](#Trace)
 * [¿Cómo encontrar objetos web?](#objetos)
@@ -19,6 +19,7 @@
 <br>
 <br>
 
+# 1
 # ¿Qué es playwright?
  1. Es un framework gratis y open source creado por microsoft para automatizar el testing web
 
@@ -43,6 +44,7 @@
 
 <br>
 
+# 2
 # Instalación
 ##### (Paso a paso y sin perdernos lo prometo)
 
@@ -120,8 +122,8 @@ npx playwright test -–debug
 <br/>
 
 
-# :smirk:
-# Creando nuestro primer test! 
+# 3
+# ¡Creando nuestro primer test! :smirk:
 
 
 En la carpeta test nos creamos otro archivo de test (ex.specs.js)
