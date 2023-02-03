@@ -1,29 +1,50 @@
 # Playwright
-A Guide-Introduction for testing with Playwright
 
 
-(Hacer introduccion de test más importante end to end)
-¿Qué es playwright?
-Es un framework gratis y open source creado por microsoft para automatizar el testing web
-Sirve para todos los navegadores apis y mobile
-Funciona con JS, TS, Java, Python, .NET (C#)
-Es admitido en tecnologías como chromium, webkit y firefox
-En SO como Windows, Linux y MacOS, soporta CI runs
-Tiene una fácil preparación e instalación, además de unos test accesibles 
-Puede generar reportes automáticos, o a medida
-Soporta docker
-Puedes grabar y documentar en navegador para el debugging
-Puedes hacer test paralelos en distintos navegadores a la vez
-Usa shadow dom
-Emula servicios móviles reales 
-Test parametrizados
-Rápido 
-Referencia → https://github.com/microsoft/playwright
+
+
+* [Qué es Playwright](#Playwright)
+* [Instalación](#¡Instalación!)
+* [Creando nuestro primer test](#test)
+* [Que queremos probar…](#probar)
+* [Trace viewer](#Trace)
+* [¿Cómo encontrar objetos web?](#objetos)
+* [Assertions](#Assertions)
+* [Grabar videos y cámara lenta](#Grabar)
+* [Hooks](#Hooks)
+* [Anotaciones](#Anotaciones)
+* [Etiquetas](#Etiquetas)
+
+
+<br>
+<br>
+
+# ¿Qué es playwright?
+ 1. Es un framework gratis y open source creado por microsoft para automatizar el testing web
+
+ 2. Soporta chromium, webkit y firefox
+
+ 3. Tiene una fácil preparación e instalación, además de unos test accesibles 
+
+ 4. Puede generar reportes automáticos, o a medida
+
+ 5. Compatible con Docker
+
+ 6. Puedes grabar y documentar tus test
+
+ 7. Puedes hacer test paralelos en distintos navegadores a la vez
+
+ 8. Usa shadow dom
+
+ 9. En distintos dispositivos y viewports 
+
+ 10. Test parametrizados
+ 
 
 	
 
 
-¡Instalación!
+# ¡Instalación!
 (Paso a paso y sin perdernos lo prometo)
 
 Requisitos:
