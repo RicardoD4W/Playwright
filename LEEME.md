@@ -4,7 +4,7 @@
 
 
 * [Qué es Playwright](#Playwright)
-* [Instalación](#¡Instalación!)
+* [Instalación](#Instalación)
 * [Creando nuestro primer test](#test)
 * [Que queremos probar…](#probar)
 * [Trace viewer](#Trace)
