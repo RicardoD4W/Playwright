@@ -39,22 +39,29 @@
  9. En distintos dispositivos y viewports 
 
  10. Test parametrizados
- 
-
-	
 
 
-# ¡Instalación!
-(Paso a paso y sin perdernos lo prometo)
+<br>
+<br>
 
-Requisitos:
-Node JS
-VS Code
+# Instalación
+##### (Paso a paso y sin perdernos lo prometo)
 
-Instalación:
-Instalación por comandos (npm)
-En cualquier carpeta
+<br>
+
+## Requisitos:
+
+* Node JS
+* VS Code
+
+### Instalación:
+
+Instalación por comandos (npm). En cualquier carpeta
+
+``` nodejs
 npm init -y playwright@latest
+```
+
 Elegir Ts || Js
 Nombramos ‘tests’
  Y
