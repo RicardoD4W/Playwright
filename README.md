@@ -92,8 +92,9 @@ npx playwright -h
 ``` bash
 npx playwright test
 ```
-(busca todos los .spec. Y los ejecuta)
-Te generará un reporte en html en la carpeta :open_file_folder: playwright-report :open_file_folder:
+(look for all the .spec. and run them)
+
+It will generate an html report in the :open_file_folder: playwright-report :open_file_folder:
 
 ``` bash
 npx playwright test –-workers 3 
