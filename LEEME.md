@@ -75,7 +75,7 @@ Con este comando nos preguntará un par de cosas, las mas importantes son lengua
 
 
 La configuración está en playwright.config.js
-En la carpeta 'test', tenemos un ejemplo básico ya hecho ‘example.specs.js’
+En la carpeta 'test', tenemos un ejemplo básico ya hecho ‘example.spec.js’
 Se añade automáticamente al gitignore para que no tengamos que preocuparnos al subirlo a github 
 
 ``` bash
@@ -94,7 +94,7 @@ npx playwright -h
 ``` bash
 npx playwright test
 ```
-(busca todos los .specs. Y los ejecuta)
+(busca todos los .spec. Y los ejecuta)
 Te generará un reporte en html en la carpeta :open_file_folder: playwright-report :open_file_folder:
 
 ``` bash
@@ -126,7 +126,7 @@ npx playwright test -–debug
 # ¡Creando nuestro primer test! :smirk:
 
 
-En la carpeta :open_file_folder: test :open_file_folder: nos creamos otro archivo de test (ex.specs.js)
+En la carpeta :open_file_folder: test :open_file_folder: nos creamos otro archivo de test (ex.spec.js)
 Añadimos el módulo de test de playwright 
 
 ``` JS
