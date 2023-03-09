@@ -130,11 +130,11 @@ En la carpeta :open_file_folder: test :open_file_folder: nos creamos otro archiv
 Añadimos el módulo de test de playwright 
 
 ``` JS
-const {test, expect} = require(‘@playwriht/test’)
+const {test, expect} = require(‘@playwright/test’)
 
 //Dependiendo de si usamos los módulos de ES
 
-import {test, expect} from '@playwriht/test'
+import {test, expect} from '@playwright/test'
 ```
 
 <br/>
@@ -156,7 +156,7 @@ Las añadimos al fichero donde estamos haciendo las pruebas y las funciones nece
 
 (A partir de aquí seguiré la sintasis sin modulos de ES)
 ```JS
-const {test, expect} = require('@playwriht/test')
+const {test, expect} = require('@playwright/test')
 const {hello, helloWorld} = require('./demo/hello')
 ```
 
