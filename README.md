@@ -73,7 +73,7 @@ With this command we will be asked a couple of things, the most important are la
 
 
 The configuration is in playwright.config.js
-In the 'test' folder, we have a basic example already made 'example.specs.js'.
+In the 'test' folder, we have a basic example already made 'example.spec.js'.
 It's automatically added to the gitignore so we don't have to worry about uploading it to github
 
 ``` bash
@@ -92,7 +92,7 @@ npx playwright -h
 ``` bash
 npx playwright test
 ```
-(busca todos los .specs. Y los ejecuta)
+(busca todos los .spec. Y los ejecuta)
 Te generará un reporte en html en la carpeta :open_file_folder: playwright-report :open_file_folder:
 
 ``` bash
