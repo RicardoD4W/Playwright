@@ -128,11 +128,11 @@ In the :open_file_folder: test :open_file_folder: folder, we create another test
 We add the test module of playwright
 
 ``` JS
-const {test, expect} = require(‘@playwriht/test’)
+const {test, expect} = require(‘@playwright/test’)
 
 //Depending on whether we use the ES modules or not.
 
-import {test, expect} from '@playwriht/test'
+import {test, expect} from '@playwright/test'
 ```
 
 <br/>
